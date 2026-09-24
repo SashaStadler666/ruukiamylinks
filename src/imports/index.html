@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171824">
+  <meta name="description" content="Games, streams e conteúdo exclusivo. Encontre os perfis e links da Ruukia em um só lugar.">
+  <title>Ruukia — Meus links</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preload" href="assets/imgFrame12.webp" as="image">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="links.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <div class="backdrop" aria-hidden="true"></div>
+  <main id="main" tabindex="-1">
+    <section class="home view" id="home" aria-labelledby="home-title">
+      <a class="notification glass" href="#links">
+        <img src="assets/imgIcon.svg" width="44" height="44" alt="">
+        <span><strong>Novidades exclusivas · 18+</strong><span>Confira o conteúdo da Ruukia</span></span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <div class="identity">
+        <div class="portrait-frame"><img class="portrait" src="assets/imgImage2.webp" alt="Ruukia, de cabelo azul, piscando para a câmera" width="260" height="310" fetchpriority="high"></div>
+        <h1 id="home-title" tabindex="-1">Ruukia</h1>
+        <p>Games, streams e um pouco de mim.</p>
+      </div>
+      <nav class="social-dock glass" aria-label="Redes sociais e área de links">
+        <a class="dock-item folder" href="#links"><img src="assets/imgVector.svg" alt="" width="52" height="48"><span>Links 18+</span></a>
+        <span class="dock-divider" aria-hidden="true"></span>
+        <a class="dock-item" data-profile="instagram" href="https://www.instagram.com/ruukiaofc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><img src="assets/imgRectangle3.webp" alt="" width="48" height="48"><span>Instagram</span></a>
+        <a class="dock-item" data-profile="twitter" href="https://x.com/ruukialol?lang=en" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter (abre em nova aba)"><img src="assets/imgRectangle4.webp" alt="" width="48" height="48"><span>X / Twitter</span></a>
+        <a class="dock-item" data-profile="twitch" href="https://www.twitch.tv/ruukialol" target="_blank" rel="noopener noreferrer" aria-label="Twitch (abre em nova aba)"><img src="assets/imgRectangle5.webp" alt="" width="48" height="48"><span>Twitch</span></a>
+        <span class="dock-item upcoming" data-profile="telegram" aria-label="Telegram: em breve"><img src="assets/imgRectangle6.webp" alt="" width="48" height="48"><span>Telegram</span><small>Em breve</small></span>
+      </nav>
+      <a class="entry-link" href="#links"><span class="age-mark">18+</span><span>Explorar conteúdo exclusivo</span><span class="chevron" aria-hidden="true"></span></a>
+      <p class="entry-note">A área exclusiva é para maiores de 18 anos.</p>
+    </section>
+
+    <section class="links-page view" id="links-view" aria-labelledby="links-title" hidden>
+      <a class="back-link glass" href="#inicio"><span class="chevron back" aria-hidden="true"></span>Voltar ao início</a>
+      <header class="profile-heading">
+        <img src="assets/imgEllipse1.webp" alt="Foto de perfil da Ruukia" width="104" height="104">
+        <h1 id="links-title" tabindex="-1">Ruukia</h1>
+        <p>Conquistas em Paladins / LoL</p>
+        <ul class="tags" aria-label="Conteúdos"><li>Games</li><li>Streams</li><li>Conteúdo exclusivo</li></ul>
+      </header>
+      <h2 class="section-label">Minha área de links</h2>
+      <div class="link-list" id="link-list"></div>
+      <p class="external-note">Os links disponíveis abrem em uma nova aba.</p>
+    </section>
+
+    <section class="info-page view" id="info-view" hidden aria-labelledby="info-title">
+      <a class="back-link glass" href="#inicio"><span class="chevron back" aria-hidden="true"></span>Voltar ao início</a>
+      <article class="info-content glass"><h1 id="info-title" tabindex="-1"></h1><div id="info-body"></div></article>
+    </section>
+    <noscript><p class="noscript">Ative o JavaScript para abrir a área exclusiva. Os links para Instagram, X e Twitch continuam disponíveis acima.</p></noscript>
+  </main>
+  <footer><nav aria-label="Informações do site"><a href="#termos">Termos de uso</a><a href="#privacidade">Privacidade</a><a href="#ajuda">Ajuda</a></nav><span>© 2026 Ruukia</span></footer>
+
+  <dialog id="age-dialog" aria-labelledby="age-title" aria-describedby="age-description">
+    <div class="dialog-content"><span class="age-seal" aria-hidden="true">18+</span><h2 id="age-title">Antes de continuar</h2><p id="age-description">Esta área reúne links para conteúdo exclusivo destinado a adultos. Você tem 18 anos ou mais?</p><button class="primary-button" id="confirm-age" type="button">Sim, tenho 18 anos ou mais</button><button class="secondary-button" id="cancel-age" type="button" autofocus>Voltar ao início</button><p class="dialog-note">Sua escolha é lembrada apenas nesta sessão.</p></div>
+  </dialog>
+</body>
+</html>

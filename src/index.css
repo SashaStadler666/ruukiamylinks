@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #171824;
+  --color-surface: #303240;
+  --color-surface-hover: #3a3e50;
+  --color-ink: #fbfbff;
+  --color-muted: #c4c6d6;
+  --color-accent: #91b9ff;
+  --color-blue: #125fd6;
+  --color-line: rgba(223, 227, 255, 0.2);
+
+  --radius-panel: 20px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  min-width: 280px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #b7ceff;
+  color: #151927;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Frosted-glass panel used across the layout. */
+.glass {
+  border: 1px solid var(--color-line);
+  background: rgba(50, 52, 70, 0.72);
+  box-shadow: 0 12px 30px rgba(4, 5, 15, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+/* Hide scrollbars until the user actually scrolls. */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glow sutil e pulsante para destacar um card em evidência. */
+@keyframes card-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(62, 16, 102, 0.45), 0 0 18px 0 rgba(62, 16, 102, 0.28);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(62, 16, 102, 0.7), 0 0 30px 3px rgba(62, 16, 102, 0.5);
+  }
+}
+.link-glow {
+  animation: card-glow 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "ruukiamylinks",
+  "description": "Create a modern, responsive website that links to multiple sites, enhancing user experience with a clean interface for easy navigation and accessibility.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
