@@ -5,11 +5,11 @@ import imgImage2 from './assets/imgImage2.png'
 import imgEllipse1 from './assets/imgEllipse1.png'
 import imgIcon from './assets/imgIcon.svg'
 import imgVector from './assets/imgVector.svg'
-import imgBackgroundPixelSky from './assets/background-pixel-sky.png'
 
 const PORTRAIT = imgImage2
 const PROFILE = imgEllipse1
-const BACKDROP = imgBackgroundPixelSky
+const BACKDROP =
+  'https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=1600&h=1000&fit=crop&auto=format'
 
 function Chevron({ back = false }: { back?: boolean }) {
   return (
@@ -114,7 +114,6 @@ export default function App() {
         className="fixed inset-0 -z-10 bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(rgba(15,16,29,0.55),rgba(15,16,29,0.82)), url('${BACKDROP}')`,
-          imageRendering: 'pixelated',
         }}
       />
 
@@ -522,3 +521,327 @@ function AgeGate({ onConfirm, onCancel }: { onConfirm: () => void; onCancel: () 
     </div>
   )
 }
+
+/* Edite somente as URLs abaixo para ativar novos perfis. Use null enquanto não houver link. */
+export const RUUKIA_LINKS: Record<string, string | null> = {
+  instagram: 'https://www.instagram.com/ruukiaofc/',
+  twitter: 'https://x.com/ruukialol?lang=en',
+  twitch: 'https://www.twitch.tv/ruukialol',
+  telegram: null,
+  telegramgroup: 'https://t.me/ruukiaonly',
+  telegrambot: 'https://t.me/ruukiabot',
+  privacy: 'https://privacy.com.br/checkout/ruukialol',
+  onlyfans: null,
+  fatalmodels: null,
+  fansly: null,
+  discord: 'https://discord.gg/75w35Vry4',
+  eloqueen: 'https://eloqueens.com.br/queens/ruukia-8',
+}
+
+import imgRectangle3 from './assets/imgRectangle3.png'
+import imgRectangle4 from './assets/imgRectangle4.png'
+import imgRectangle5 from './assets/imgRectangle5.png'
+import imgRectangle6 from './assets/imgRectangle6.png'
+import imgImage9 from './assets/imgImage9.png'
+
+export type Social = {
+  key: string
+  name: string
+  tint: string
+  logo?: string
+}
+
+/* Redes exibidas no dock da página inicial. */
+export const socials: Social[] = [
+  { key: 'instagram', name: 'Instagram', tint: '#e1306c', logo: imgRectangle3 },
+  { key: 'twitter', name: 'X / Twitter', tint: '#e7e9f2', logo: imgRectangle4 },
+  { key: 'twitch', name: 'Twitch', tint: '#9146ff', logo: imgRectangle5 },
+  { key: 'discord', name: 'Discord', tint: '#5865f2', logo: imgImage9 },
+]
+
+import imgImage5 from './assets/imgImage5.png'
+import imgImage6 from './assets/imgImage6.png'
+import imgImage7 from './assets/imgImage7.png'
+import imgImage10 from './assets/imgImage10.png'
+
+export type LinkEntry = {
+  key: string
+  name: string
+  description: string
+  tint: string
+  logo?: string
+  highlight?: boolean
+}
+
+/* Área de links exclusivos. `logo` usa o asset real quando disponível. */
+export const linkEntries: LinkEntry[] = [
+  { key: 'privacy', name: 'Privacy', description: 'O MELHOR DE MIM ESTÁ AQUI 🔥', tint: '#f8317f', logo: imgImage5, highlight: true },
+  { key: 'eloqueen', name: 'Eloqueen', description: 'TENHA A EXPERIÊNCIA DE JOGAR DUO COMIGO 💕', tint: '#7c5cff', logo: imgImage10, highlight: true },
+  {
+    key: 'telegrambot',
+    name: 'Assine o TELEGRAM',
+    description: 'TENHA ACESSO AOS MEUS CONTEÚDOS DENTRO DO TELEGRAM 🔞',
+    tint: '#29a9eb',
+    highlight: true,
+  },
+  { key: 'telegramgroup', name: 'Telegram', description: 'PRÉVIAS 🥵', tint: '#29a9eb' },
+  { key: 'fansly', name: 'Fansly', description: 'Conteúdos exclusivos', tint: '#1da5f2' },
+  { key: 'fatalmodels', name: 'Fatal Models', description: 'Conteúdos exclusivos', tint: '#111', logo: imgImage7 },
+  { key: 'onlyfans', name: 'OnlyFans', description: 'Conteúdos exclusivos', tint: '#00aff0', logo: imgImage6 },
+]
+
+export function validLink(value: string | null | undefined): string | null {
+  if (!value) return null
+  try {
+    const url = new URL(value)
+    return url.protocol === 'https:' ? url.href : null
+  } catch {
+    return null
+  }
+}
+
+export type InfoPage = { title: string; body: { h?: string; p?: string; reset?: boolean }[] }
+
+export const infoPages: Record<string, InfoPage> = {
+  termos: {
+    title: 'Termos de uso',
+    body: [
+      { p: 'Este site reúne os perfis e canais da Ruukia. Use os links disponíveis para acessar cada plataforma.' },
+      { h: 'Conteúdo exclusivo' },
+      {
+        p: 'A área exclusiva é destinada a pessoas com 18 anos ou mais. Ao continuar, você declara atender a essa condição.',
+      },
+      { h: 'Plataformas externas' },
+      {
+        p: 'Assinaturas, compras e acesso a conteúdos acontecem diretamente nas plataformas de destino, conforme os termos de cada serviço. Nenhum pagamento é processado neste site.',
+      },
+      { h: 'Links em breve' },
+      { p: 'Os canais identificados como “Em breve” ainda não estão disponíveis.' },
+    ],
+  },
+  privacidade: {
+    title: 'Privacidade',
+    body: [
+      { p: 'Este site não tem formulário de cadastro e não solicita seu nome, e-mail ou dados de pagamento.' },
+      { h: 'Confirmação de idade' },
+      {
+        p: 'A confirmação é guardada no armazenamento de sessão do seu navegador para evitar que a pergunta se repita durante a visita. O site não solicita nem armazena sua data de nascimento.',
+      },
+      { h: 'Ao acessar outro site' },
+      {
+        p: 'Os perfis abrem em uma nova aba. Cada plataforma e o serviço que hospeda este site têm suas próprias práticas de privacidade e podem registrar dados técnicos de acesso.',
+      },
+      { h: 'Limpar a confirmação' },
+      { p: 'Você pode apagar a confirmação desta sessão a qualquer momento.' },
+      { reset: true },
+    ],
+  },
+  ajuda: {
+    title: 'Como posso te ajudar?',
+    body: [
+      { h: 'Onde encontro os perfis?' },
+      {
+        p: 'Na página inicial, toque em Instagram, X ou Twitch. Para ver a área exclusiva, escolha “Meus links” e confirme que tem 18 anos ou mais.',
+      },
+      { h: 'O que significa “Em breve”?' },
+      { p: 'Esse perfil ainda não tem um link disponível. Ele será ativado quando estiver pronto.' },
+      { h: 'Precisa falar com a Ruukia?' },
+      { p: 'Entre em contato pelo Instagram da Ruukia.' },
+    ],
+  },
+}
+
+import type { ReactNode } from 'react'
+
+type IconProps = { className?: string }
+
+/* Simple monochrome glyphs drawn in currentColor so tiles can tint them. */
+
+export function InstagramGlyph({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17" cy="7" r="1.2" fill="currentColor" />
+    </svg>
+  )
+}
+
+export function XGlyph({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M17.5 3h2.7l-5.9 6.7L21.5 21h-5.4l-4.2-5.5L6.9 21H4.2l6.3-7.2L3.7 3h5.5l3.8 5 4.5-5Zm-.95 16.2h1.5L8.5 4.7H6.9l9.65 14.5Z" />
+    </svg>
+  )
+}
+
+export function TwitchGlyph({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M4 3 3 6.5V19h4v2.5h2.5L12 19h3.5L21 13.5V3H4Zm15 9.5-2.5 2.5H13l-2.2 2.2V15H7.5V4.5H19v8Z" />
+      <path d="M15.5 7h-1.5v4h1.5V7ZM11.5 7H10v4h1.5V7Z" />
+    </svg>
+  )
+}
+
+export function TelegramGlyph({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M21.5 4.3 2.9 11.5c-1 .4-1 1.7.1 2l4.6 1.4 1.8 5.4c.3.8 1.3 1 1.9.4l2.5-2.4 4.7 3.5c.7.5 1.7.1 1.9-.7l3-14.3c.2-1-.8-1.9-1.8-1.5ZM9.7 14.3l8-5-6.6 6.1c-.2.2-.3.4-.4.7l-.3 2.2-.7-4Z" />
+    </svg>
+  )
+}
+
+export function DiscordGlyph({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M19.3 5.4A16 16 0 0 0 15.3 4l-.3.5c1.4.4 2.6 1 3.7 1.7a13.4 13.4 0 0 0-9.4 0c1.1-.7 2.3-1.3 3.7-1.7L12.7 4a16 16 0 0 0-4 1.4C5.5 9.1 4.7 12.7 5 16.2a15 15 0 0 0 4.6 2.3l.9-1.4c-.7-.3-1.4-.6-2-1l.5-.4a10.7 10.7 0 0 0 9.2 0l.5.4c-.6.4-1.3.7-2 1l.9 1.4a15 15 0 0 0 4.6-2.3c.4-4-.9-7.6-2.9-10.8ZM9.7 14.3c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8Zm4.6 0c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8Z" />
+    </svg>
+  )
+}
+
+export function HeartGlyph({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M12 20.3 4.3 12.6a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1.2 1.2 1.2-1.2a4.6 4.6 0 0 1 6.5 6.5L12 20.3Z" />
+    </svg>
+  )
+}
+
+export function ControllerGlyph({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden="true">
+      <path
+        d="M7 8h10a4 4 0 0 1 3.9 3.1l1 4.4A2.4 2.4 0 0 1 18.6 18l-1.6-2H7l-1.6 2A2.4 2.4 0 0 1 2.1 15.5l1-4.4A4 4 0 0 1 7 8Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <path d="M7 12h2M8 11v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <circle cx="15.5" cy="11.5" r="1" fill="currentColor" />
+      <circle cx="17" cy="13.5" r="1" fill="currentColor" />
+    </svg>
+  )
+}
+
+/* A lettermark for platforms without a recognizable free glyph. */
+export function Lettermark({ label, className }: { label: string; className?: string }) {
+  return (
+    <span className={className} aria-hidden="true" style={{ fontWeight: 800, letterSpacing: '-0.03em' }}>
+      {label}
+    </span>
+  )
+}
+
+export const platformGlyph: Record<string, ReactNode> = {
+  instagram: <InstagramGlyph className="h-6 w-6" />,
+  twitter: <XGlyph className="h-5 w-5" />,
+  twitch: <TwitchGlyph className="h-6 w-6" />,
+  telegram: <TelegramGlyph className="h-6 w-6" />,
+  telegramgroup: <TelegramGlyph className="h-6 w-6" />,
+  telegrambot: <TelegramGlyph className="h-6 w-6" />,
+  privacy: <HeartGlyph className="h-6 w-6" />,
+  onlyfans: <Lettermark label="OF" className="text-lg" />,
+  fatalmodels: <Lettermark label="FM" className="text-base" />,
+  fansly: <Lettermark label="Fa" className="text-lg" />,
+  discord: <DiscordGlyph className="h-6 w-6" />,
+  eloqueen: <ControllerGlyph className="h-6 w-6" />,
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #171824;
+  --color-surface: #303240;
+  --color-surface-hover: #3a3e50;
+  --color-ink: #fbfbff;
+  --color-muted: #c4c6d6;
+  --color-accent: #91b9ff;
+  --color-blue: #125fd6;
+  --color-line: rgba(223, 227, 255, 0.2);
+
+  --radius-panel: 20px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  min-width: 280px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #b7ceff;
+  color: #151927;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Frosted-glass panel used across the layout. */
+.glass {
+  border: 1px solid var(--color-line);
+  background: rgba(50, 52, 70, 0.72);
+  box-shadow: 0 12px 30px rgba(4, 5, 15, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+/* Hide scrollbars until the user actually scrolls. */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glow sutil e pulsante para destacar um card em evidência. */
+@keyframes card-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(62, 16, 102, 0.45), 0 0 18px 0 rgba(62, 16, 102, 0.28);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(62, 16, 102, 0.7), 0 0 30px 3px rgba(62, 16, 102, 0.5);
+  }
+}
+.link-glow {
+  animation: card-glow 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+
+/// <reference types="vite/client" />
